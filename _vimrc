@@ -65,7 +65,7 @@ function AddTitle()
 	call setline(1,"/*")
 	call append(1,"* Filename: " . expand("%"))
 	call append(2,"* " . "Last modified: " . strftime("%Y-%m-%d %H:%M"))
-	call append(3,"* Author: Chen Jiang(姜晨) -- orange8637@gmail.com")
+	call append(3,"* Author: Qixue Xiao <xiaoqixue_1@163.com>")
 	call append(4,"* Description: ")
 	call append(5,"*/")
 endf
@@ -76,7 +76,7 @@ function AddTitle2()
 	call append(1,"#-*- coding: utf-8 -*-")
 	call append(2,"#Filename: " . expand("%"))
 	call append(3,"#" . "Last modified: " . strftime("%Y-%m-%d %H:%M"))
-	call append(4,"#Author: Chen Jiang(姜晨) -- orange8637@gmail.com")
+	call append(4444,"* Author: Qixue Xiao <xiaoqixue_1@163.com>")
 	call append(5,"#Description: ")
 endf
 map fuckp :call AddTitle2():$o
