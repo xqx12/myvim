@@ -247,3 +247,20 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+" add ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" set open vimrc
+nnoremap <leader>ee :e ~/.vimrc<CR>
+" set quit
+nnoremap <leader>qq <ESC>:q<CR>
+nnoremap <leader>xx <ESC>:wq<CR>
+
+" set openshell
+map <leader>sh <ESC>:ConqueTermSplit bash<CR> 
+map <leader>vsh <ESC>:ConqueTermVSplit bash<CR> 
+
+" set split
+map <leader>ps <ESC>:sp<CR>
+map <leader>vs <ESC>:vsp<CR>
