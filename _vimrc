@@ -1,9 +1,6 @@
 "自动注释,cc ,c<spac> ,cs
 let mapleader=","
-"不产生交换文件
-set noswapfile
-"显示缩进线
-set list 
+"不产生交换文件 set noswapfile "显示缩进线 set list 
 set lcs=tab:\|\ 
 "窗口切换
 map <C-j> <C-W>j
@@ -85,7 +82,7 @@ function AddTitle1()
 	call setline(1,"#!/bin/bash")
 	call append(1,"#Filename: " . expand("%"))
 	call append(2,"#" . "Last modified: " . strftime("%Y-%m-%d %H:%M"))
-	call append(3,"#Author: Chen Jiang(姜晨) -- orange8637@gmail.com")
+	call append(3,"* Author: Qixue Xiao <xiaoqixue_1@163.com>")
 	call append(4,"#Description: ")
 endf
 map fucks :call AddTitle1():$o
@@ -253,14 +250,22 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " set open vimrc
 nnoremap <leader>ee :e ~/.vimrc<CR>
+nnoremap <leader>eb :e ~/.bashrc<CR>
 " set quit
 nnoremap <leader>qq <ESC>:q<CR>
 nnoremap <leader>xx <ESC>:wq<CR>
 
 " set openshell
-map <leader>sh <ESC>:ConqueTermSplit bash<CR> 
+map <leader>sh <ESC>:ConqueTerm bash<CR> 
+map <leader>psh <ESC>:ConqueTermSplit bash<CR> 
 map <leader>vsh <ESC>:ConqueTermVSplit bash<CR> 
 
 " set split
 map <leader>ps <ESC>:sp<CR>
 map <leader>vs <ESC>:vsp<CR>
+
+" open FileExplorer
+map <leader>tt <ESC>:e .<CR>
+
+" map c-n to c-f
+map <C-n> <C-f> 
