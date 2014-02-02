@@ -3,6 +3,7 @@ let mapleader=","
 "不产生交换文件 set noswapfile "显示缩进线 set list 
 set lcs=tab:\|\ 
 "窗口切换
+let g:C_Ctrl_j='off'
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -57,7 +58,7 @@ set softtabstop=4
 set shiftwidth=4
 "取消自动注释set noautoindent,set fo-=r
 set fo-=r
-"fuckc 添加首注释
+"testc 添加首注释
 function AddTitle()
 	call setline(1,"/*")
 	call append(1,"* Filename: " . expand("%"))
@@ -66,26 +67,44 @@ function AddTitle()
 	call append(4,"* Description: ")
 	call append(5,"*/")
 endf
-map fuckc :call AddTitle():$o
-"fuckp 添加首注释
+map testc :call AddTitle():$o
+"testp 添加首注释
 function AddTitle2()
 	call setline(1,"#!/usr/bin/env python")
 	call append(1,"#-*- coding: utf-8 -*-")
 	call append(2,"#Filename: " . expand("%"))
 	call append(3,"#" . "Last modified: " . strftime("%Y-%m-%d %H:%M"))
-	call append(4444,"* Author: Qixue Xiao <xiaoqixue_1@163.com>")
+	call append(4,"# Author: Qixue Xiao <xiaoqixue_1@163.com>")
 	call append(5,"#Description: ")
 endf
-map fuckp :call AddTitle2():$o
-"fucks 添加首注释
+map testp :call AddTitle2():$o
+"tests 添加首注释
 function AddTitle1()
 	call setline(1,"#!/bin/bash")
 	call append(1,"#Filename: " . expand("%"))
 	call append(2,"#" . "Last modified: " . strftime("%Y-%m-%d %H:%M"))
-	call append(3,"* Author: Qixue Xiao <xiaoqixue_1@163.com>")
+	call append(3,"# Author: Qixue Xiao <xiaoqixue_1@163.com>")
 	call append(4,"#Description: ")
 endf
-map fucks :call AddTitle1():$o
+map tests :call AddTitle1():$o
+
+function CommentBlock(comment, ...)
+	"If 1 or more optional args, first optional arg is introducer...
+	let introducer =  a:0 >= 1  ?  a:1  :  "//"
+
+	"If 2 or more optional args, second optional arg is boxing character...
+	let box_char   =  a:0 >= 2  ?  a:2  :  "*"
+
+	"If 3 or more optional args, third optional arg is comment width...
+	let width      =  a:0 >= 3  ?  a:3  :  strlen(a:comment) + 2
+
+	" Build the comment box and put the comment inside it...
+	return introducer . repeat(box_char,width) . "\<CR>"
+	\    . introducer . " " . a:comment        . "\<CR>"
+	\    . introducer . repeat(box_char,width) . "\<CR>"
+endfunction
+map test :call CommentBlock(input("test")):$o
+
 "超级补全TAB
 filetype plugin indent on
 set completeopt=longest,menu
@@ -254,6 +273,7 @@ nnoremap <leader>eb :e ~/.bashrc<CR>
 " set quit
 nnoremap <leader>qq <ESC>:q<CR>
 nnoremap <leader>xx <ESC>:wq<CR>
+nnoremap <leader>ww <ESC>:w<CR>
 
 " set openshell
 map <leader>sh <ESC>:ConqueTerm bash<CR> 
@@ -261,11 +281,21 @@ map <leader>psh <ESC>:ConqueTermSplit bash<CR>
 map <leader>vsh <ESC>:ConqueTermVSplit bash<CR> 
 
 " set split
-map <leader>ps <ESC>:sp<CR>
-map <leader>vs <ESC>:vsp<CR>
+nnoremap <leader>ps <ESC>:sp<CR>
+nnoremap <leader>vs <ESC>:vsp<CR>
 
 " open FileExplorer
 map <leader>tt <ESC>:e .<CR>
 
 " map c-n to c-f
 map <C-n> <C-f> 
+
+" map F3 to Grep
+nnoremap <silent> <F3> :Grep<CR>
+
+" map c-v c-v to c-r c-w for paste to command line
+nnoremap <C-c><C-v> /<C-r><C-w>
+vnoremap <C-c><C-v> y/<C-r>"
+
+
+
