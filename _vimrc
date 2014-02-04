@@ -4,10 +4,14 @@ let mapleader=","
 set lcs=tab:\|\ 
 "窗口切换
 let g:C_Ctrl_j='off'
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-j> <ESC><C-W>j
+map <C-k> <ESC><C-W>k
+map <C-h> <ESC><C-W>h
+map <C-l> <ESC><C-W>l
+inoremap <C-j> <ESC><C-W>j
+inoremap <C-k> <ESC><C-W>k
+inoremap <C-h> <ESC><C-W>h
+inoremap <C-l> <ESC><C-W>l
 "忽略大小写
 set ignorecase
 "backspace可以删除
@@ -292,6 +296,8 @@ map <C-n> <C-f>
 
 " map F3 to Grep
 nnoremap <silent> <F3> :Grep<CR>
+nnoremap <silent> <F4> :cclose<CR>
+nnoremap <silent> <F5> :copen<CR>
 
 " map c-v c-v to c-r c-w for paste to command line
 nnoremap <C-c><C-v> /<C-r><C-w>
