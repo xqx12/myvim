@@ -292,7 +292,7 @@ nnoremap <leader>vs <ESC>:vsp<CR>
 map <leader>tt <ESC>:e .<CR>
 
 " map c-n to c-f
-map <C-n> <C-f> 
+"map <C-n> <C-f> 
 
 " map F3 to Grep
 nnoremap <silent> <F3> :Grep<CR>
@@ -300,8 +300,14 @@ nnoremap <silent> <F4> :cclose<CR>
 nnoremap <silent> <F5> :copen<CR>
 
 " map c-v c-v to c-r c-w for paste to command line
-nnoremap <C-c><C-v> /<C-r><C-w>
-vnoremap <C-c><C-v> y/<C-r>"
+nnoremap <C-c><C-v> :<C-r><C-w>
+vnoremap <C-c><C-v> y:<C-r>"
+
+" map tab page operation
+nnoremap <leader>tn <ESC>:tabnew<CR>
+nnoremap <C-m> <ESC>:tabp<CR>
+nnoremap <C-n> <ESC>:tabn<CR>
+
 
 
 
