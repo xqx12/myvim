@@ -217,7 +217,7 @@ let s:C_Ctrl_j								= 'on'
 "
 let s:C_SourceCodeExtensions  = 'c cc cp cxx cpp CPP c++ C i ii'
 let s:C_CppcheckSeverity			= 'all'
-let s:C_InsertFileHeader			= 'yes'
+let s:C_InsertFileHeader			= 'no'
 let s:C_NonCComment						= '#'
 "
 let s:C_MenusVisible          = 'no'		" state variable controlling the C-menus

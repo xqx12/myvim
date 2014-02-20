@@ -225,7 +225,7 @@
 " the grep/fgrep/egrep/agrep utilities. By default, this is set to an empty
 " string. You can change this using the let command:
 "
-"       :let Grep_Default_Options = '-i'
+"       :let Grep_Default_Options = '-i' 
 "
 " The 'Grep_Skip_Dirs' variable specifies the list of directories to skip
 " while doing recursive searches. By default, this is set to 'RCS CVS SCCS'.
@@ -237,7 +237,7 @@
 " doing recursive searches. By default, this is set to '*~ *,v s.*'. You can
 " change this using the let command:
 "
-"       :let Grep_Skip_Files = '*.bak *~'
+"       :let Grep_Skip_Files = '*.bak *~ tags'
 "
 " By default, when you invoke the Grep commands the quickfix window will be
 " opened with the grep output.  You can disable opening the quickfix window,
@@ -345,7 +345,7 @@ endif
 
 " Default grep options
 if !exists("Grep_Default_Options")
-    let Grep_Default_Options = ''
+    let Grep_Default_Options = '-i -R'
 endif
 
 " Use the 'xargs' utility in combination with the 'find' utility. Set this
@@ -402,7 +402,7 @@ endif
 " The list of files to skip while searching for a pattern. Set this variable
 " to '', if you don't want to skip any files.
 if !exists("Grep_Skip_Files")
-    let Grep_Skip_Files = '*~ *,v s.*'
+    let Grep_Skip_Files = '*~ *,v s.* *tags'
 endif
 
 " RunGrepCmd()

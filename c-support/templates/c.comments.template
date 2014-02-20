@@ -11,12 +11,14 @@
 == Comments.frame == map:cfr, shortcut:f  ==
 /*-----------------------------------------------------------------------------
  *  <CURSOR>
+ *  Copyright: addbyxqx |DATE| |TIME|
  *-----------------------------------------------------------------------------*/
 == Comments.function == map:cfu, shortcut:f  ==
 /* 
  * ===  FUNCTION  ======================================================================
  *         Name:  |?FUNCTION_NAME|
  *  Description:  <CURSOR>
+ *  Copyright: addbyxqx |DATE| |TIME|
  * =====================================================================================
  */
 == Comments.method == map:cme, shortcut:m  ==
@@ -25,6 +27,7 @@
  *       Class:  |?CLASSNAME|
  *      Method:  |?CLASSNAME| :: |?METHODNAME|
  * Description:  <CURSOR>
+ *  Copyright: addbyxqx |DATE| |TIME|
  *--------------------------------------------------------------------------------------
  */
 == Comments.class == map:ccl, shortcut:c  ==
@@ -32,6 +35,7 @@
  * =====================================================================================
  *        Class:  |?CLASSNAME|
  *  Description:  <CURSOR>
+ *  Copyright: addbyxqx |DATE| |TIME|
  * =====================================================================================
  */
 == ENDTEMPLATE ==
@@ -42,7 +46,7 @@
 
 == SEP: Comments.sep_file ==
 
-== Comments.file description impl == map:cfdi, shortcut:c, start, noindent ==
+== Comments.file description impl == map:cfdi, shortcut:c, noindent ==
 /*
  * =====================================================================================
  *
@@ -61,7 +65,7 @@
  * =====================================================================================
  */
 
-== Comments.file description header == map:cfdh, shortcut:h, start, noindent ==
+== Comments.file description header == map:cfdh, shortcut:h, noindent ==
 /*
  * =====================================================================================
  *
