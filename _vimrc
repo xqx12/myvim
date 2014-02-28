@@ -16,6 +16,39 @@ inoremap <C-l> <ESC><C-W>l
 set ignorecase
 "backspace可以删除
 set backspace=indent,eol,start
+
+" 判断操作系统类型
+if(has("win32") || has("win64"))
+    let g:isWIN = 1
+else
+    let g:isWIN = 0
+endif
+" 判断是否处于GUI界面
+if has("gui_running")
+    let g:isGUI = 1
+else
+    let g:isGUI = 0
+endif
+" 设置着色模式和字体
+if g:isWIN
+    if g:isGUI
+        colorscheme molokai
+        set guifont=Monaco:h11
+    else
+        colorscheme tango2
+        set guifont=Monaco:h11
+    endif
+else
+    if g:isGUI
+        colorscheme molokai
+        set guifont=Monaco\ 11
+    else
+        "colorscheme blackboard  
+		colorscheme tango2
+        set guifont=Monaco\ 11
+    endif
+endif
+
 "编码问题，保存为set fileencoding=gb18030,打开检测set fileencodings
 set fileencodings=ucs-bom,utf-8,GB18030,gbk,chinese
 set fileencoding=utf-8
@@ -37,7 +70,7 @@ set history=1000
 syntax enable
 syntax on
 "配色
-colorscheme desert
+"colorscheme desert
 "正常模式下按wm调出资源管理器
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
@@ -91,6 +124,21 @@ function AddTitle1()
 	call append(4,"#Description: ")
 endf
 map tests :call AddTitle1():$o
+
+"testd daily reports
+function AddTitle3()
+	call setline(1,"# DailyReport")
+	call append(1,"       " . strftime("%Y-%m-%d %H:%M") . "   Qixue Xiao <xiaoqixue_1@163.com>   ")
+	call append(2,"=========================================================================   ")
+	call append(3,"    1.    ")
+	call append(4,"    2.    ")
+	call append(5,"     .  ")
+	call append(6,"ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo   ")
+	call append(7," ")
+	call append(8," ")
+endf
+map testd :call AddTitle3():$o
+
 
 function CommentBlock(comment, ...)
 	"If 1 or more optional args, first optional arg is introducer...
@@ -276,6 +324,7 @@ nnoremap <leader>ee :e ~/.vimrc<CR>
 nnoremap <leader>eb :e ~/.bashrc<CR>
 " set quit
 nnoremap <leader>qq <ESC>:q<CR>
+nnoremap <leader>qa <ESC>:qa<CR>
 nnoremap <leader>xx <ESC>:wq<CR>
 nnoremap <leader>ww <ESC>:w<CR>
 
@@ -285,8 +334,8 @@ map <leader>psh <ESC>:ConqueTermSplit bash<CR>
 map <leader>vsh <ESC>:ConqueTermVSplit bash<CR> 
 
 " set split
-nnoremap <leader>ps <ESC>:sp<CR>
-nnoremap <leader>vs <ESC>:vsp<CR>
+nnoremap <leader>ss <ESC>:sp<CR>
+nnoremap <leader>vv <ESC>:vsp<CR>
 
 " open FileExplorer
 map <leader>tt <ESC>:e .<CR>
@@ -295,18 +344,60 @@ map <leader>tt <ESC>:e .<CR>
 "map <C-n> <C-f> 
 
 " map F3 to Grep
-nnoremap <silent> <F3> :Grep<CR>
+nnoremap <silent> <F3> :Grep -n -i --exclude-dir=*out* --exclude=tags <CR>
 nnoremap <silent> <F4> :cclose<CR>
-nnoremap <silent> <F5> :copen<CR>
+"nnoremap <silent> <F5> :copen<CR>
+nnoremap <silent> <F5> :10sp<CR><ESC>:ConqueTerm bash <CR> 
 
 " map c-v c-v to c-r c-w for paste to command line
 nnoremap <C-c><C-v> :<C-r><C-w>
 vnoremap <C-c><C-v> y:<C-r>"
 
 " map tab page operation
-nnoremap <leader>tn <ESC>:tabnew<CR>
-nnoremap <C-m> <ESC>:tabp<CR>
+nnoremap <C-t><C-t> <ESC>:tabnew<CR>
+"nnoremap <C-m> <ESC>:tabp<CR>
 nnoremap <C-n> <ESC>:tabn<CR>
+
+" open an url
+function! OpenUrlUnderCursor()
+	let path="firefox"
+	execute "normal BvEy"
+	let url=matchstr(@0, '[a-z]*:\/\/[^ >,;]*')
+	if url != ""
+		"silent exec "!open -a ".path." '".url."'" | redraw! 
+		exec  "!".path." '".url."'"  
+		echo "opened ".path" " .url
+	else
+		echo "No URL under cursor."
+	endif
+endfunction
+nmap <leader>oo :call OpenUrlUnderCursor()<CR>
+
+" clear the quickfix window
+nnoremap <leader>cq :call setqflist([])<CR>
+
+" disable auto insert comments such as // in c
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" extent the higt of a split screen
+map <Leader>aa <ESC>:res +10<CR>
+map <Leader>zz <ESC>:res -10<CR>
+
+" \16                 十六进制格式查看
+nmap <leader>16 <ESC>:%!xxd<ESC>
+
+" \r16                返回普通格式
+nmap <leader>r16 <ESC>:%!xxd -r<ESC>
+
+" add llvm syntax highligting
+augroup filetype
+	au! BufRead,BufNewFile *.ll		set filetype=llvm
+augroup END
+
+augroup filetype
+	au! BufRead,BufNewFile *.td		set filetype=tablegen
+augroup END
+
 
 
 
