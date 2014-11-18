@@ -346,7 +346,7 @@ map <leader>tt <ESC>:e .<CR>
 " map F3 to Grep
 nnoremap <silent> <F3> :Grep -n -i --exclude-dir=*out* --exclude=tags <CR>
 nnoremap <silent> <F4> :cclose<CR>
-"nnoremap <silent> <F5> :copen<CR>
+nnoremap <silent> <F6> :copen<CR>
 nnoremap <silent> <F5> :10sp<CR><ESC>:ConqueTerm bash <CR> 
 
 " map c-v c-v to c-r c-w for paste to command line
@@ -388,6 +388,9 @@ nmap <leader>16 <ESC>:%!xxd<ESC>
 
 " \r16                返回普通格式
 nmap <leader>r16 <ESC>:%!xxd -r<ESC>
+
+" set cscope search in quickfix
+nmap <leader>sc <ESC>:set csqf=s-,c-,d-,i-,t-,e-<ESC>
 
 " add llvm syntax highligting
 augroup filetype
