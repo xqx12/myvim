@@ -1,7 +1,7 @@
 #!/bin/bash
 #Filename: install.sh
 #Last modified: 2012-10-09 23:08
-#Author: Chen Jiang(姜晨) -- orange8637@gmail.com
+#Author: xqx cp from jiang chen
 #Description: vim config install
 
 if [ -d ~/.vim ];then

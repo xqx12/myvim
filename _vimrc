@@ -69,6 +69,7 @@ set history=1000
 "语法高亮
 syntax enable
 syntax on
+set hlsearch
 "配色
 "colorscheme desert
 "正常模式下按wm调出资源管理器
