@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/xqx/projects/benchmarks/busybox-1.21.0'
-let g:netrw_dirhist_2='/home/xqx/projects'
-let g:netrw_dirhist_3='/home/xqx/projects/klee-test/klee/examples/get_sign'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/xqx/data/xqx/projects/lib-klee/alloc-klee/klee/examples/bench_malloc'
+let g:netrw_dirhist_2='/home/xqx/data/xqx/mount/gnu_all/gnu_all/gnu_build'
+let g:netrw_dirhist_3='/home/xqx/data/xqx/projects/benckmarks-klee/libpng-1.2.4/klee-out-14'
+let g:netrw_dirhist_4='/home/xqx/data/xqx/projects/benckmarks-klee/libpng-test'
+let g:netrw_dirhist_5='/home/xqx/data/xqx/projects/iFuzz/ifuzz/.git'
+let g:netrw_dirhist_6='/home/xqx/data/xqx/projects/benckmarks-klee/libpng-test/libpng-1.6.15/build-llvm/.libs/klee-out-0'
